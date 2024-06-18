@@ -1,0 +1,198 @@
+Crate categories
+CREATE (c1:Category {name: 'Science Fiction'})
+CREATE (c2:Category {name: 'Drama'})
+CREATE (c3:Category {name: 'Adventure'})
+CREATE (c4:Category {name: 'Comedy'})
+
+Create movies
+CREATE (m1:Movie {title: 'Inception', description: 'A thief who steals corporate secrets...', rating: 8.8, age_restricted: false, awarded: true})
+CREATE (m2:Movie {title: 'The Revenant', description: 'A frontiersman on a fur trading expedition...', rating: 8.0, age_restricted: true, awarded: true})
+CREATE (m3:Movie {title: 'Interstellar', description: 'A team of explorers travel...', rating: 8.6, age_restricted: false, awarded: true})
+CREATE (m4:Movie {title: 'Django Unchained', description: 'With the help of a German bounty hunter...', rating: 8.4, age_restricted: true, awarded: true})
+CREATE (m5:Movie {title: 'The Dark Knight', description: 'When the menace known as The Joker...', rating: 9.0, age_restricted: true, awarded: true})
+CREATE (m6:Movie {title: 'Fight Club', description: 'An insomniac office worker...', rating: 8.8, age_restricted: true, awarded: true})
+CREATE (m7:Movie {title: 'Pulp Fiction', description: 'The lives of two mob hitmen...', rating: 8.9, age_restricted: true, awarded: true})
+CREATE (m8:Movie {title: 'The Matrix', description: 'A computer hacker learns...', rating: 8.7, age_restricted: true, awarded: true})
+CREATE (m9:Movie {title: 'Forrest Gump', description: 'The presidencies of Kennedy...', rating: 8.8, age_restricted: false, awarded: true})
+CREATE (m10:Movie {title: 'The Shawshank Redemption', description: 'Two imprisoned men bond...', rating: 9.3, age_restricted: false, awarded: true})
+CREATE (m11:Movie {title: 'The Godfather', description: 'The aging patriarch of an organized crime dynasty...', rating: 9.2, age_restricted: true, awarded: true})
+CREATE (m12:Movie {title: 'The Godfather Part II', description: 'The early life and career of Vito Corleone...', rating: 9.0, age_restricted: true, awarded: true})
+CREATE (m13:Movie {title: 'The Lord of the Rings: The Fellowship of the Ring', description: 'A meek Hobbit from the Shire...', rating: 8.8, age_restricted: false, awarded: true})
+CREATE (m14:Movie {title: 'The Lord of the Rings: The Return of the King', description: 'Gandalf and Aragorn lead the World...', rating: 8.9, age_restricted: false, awarded: true})
+CREATE (m15:Movie {title: 'The Lord of the Rings: The Two Towers', description: 'While Frodo and Sam edge closer...', rating: 8.7, age_restricted: false, awarded: true})
+CREATE (m16:Movie {title: 'Star Wars: Episode IV - A New Hope', description: 'Luke Skywalker joins forces with a Jedi Knight...', rating: 8.6, age_restricted: false, awarded: true})
+CREATE (m17:Movie {title: 'Star Wars: Episode V - The Empire Strikes Back', description: 'After the Rebels are overpowered by the Empire...', rating: 8.7, age_restricted: false, awarded: true})
+CREATE (m18:Movie {title: 'Star Wars: Episode VI - Return of the Jedi', description: 'After rescuing Han Solo...', rating: 8.3, age_restricted: false, awarded: true})
+CREATE (m19:Movie {title: 'Avengers: Endgame', description: 'After the devastating events of Avengers...', rating: 8.4, age_restricted: true, awarded: true})
+CREATE (m20:Movie {title: 'Guardians of the Galaxy', description: 'A group of intergalactic criminals...', rating: 8.0, age_restricted: false, awarded: true})
+
+Create actors
+CREATE (a1:Actor {name: 'Leonardo DiCaprio', age: 45, nationality: 'American'})
+CREATE (a2:Actor {name: 'Joseph Gordon-Levitt', age: 39, nationality: 'American'})
+CREATE (a3:Actor {name: 'Tom Hardy', age: 42, nationality: 'British'})
+CREATE (a4:Actor {name: 'Christian Bale', age: 47, nationality: 'British'})
+CREATE (a5:Actor {name: 'Brad Pitt', age: 57, nationality: 'American'})
+CREATE (a6:Actor {name: 'Samuel L. Jackson', age: 72, nationality: 'American'})
+CREATE (a7:Actor {name: 'Keanu Reeves', age: 56, nationality: 'Canadian'})
+CREATE (a8:Actor {name: 'Tom Hanks', age: 64, nationality: 'American'})
+CREATE (a9:Actor {name: 'Morgan Freeman', age: 83, nationality: 'American'})
+CREATE (a10:Actor {name: 'Marlon Brando', age: 80, nationality: 'American'})
+CREATE (a11:Actor {name: 'Al Pacino', age: 80, nationality: 'American'})
+CREATE (a12:Actor {name: 'Elijah Wood', age: 40, nationality: 'American'})
+CREATE (a13:Actor {name: 'Ian McKellen', age: 81, nationality: 'British'})
+CREATE (a14:Actor {name: 'Mark Hamill', age: 69, nationality: 'American'})
+CREATE (a15:Actor {name: 'Harrison Ford', age: 78, nationality: 'American'})
+CREATE (a16:Actor {name: 'Carrie Fisher', age: 60, nationality: 'American'})
+CREATE (a17:Actor {name: 'Robert Downey Jr.', age: 56, nationality: 'American'})
+CREATE (a18:Actor {name: 'Chris Evans', age: 39, nationality: 'American'})
+CREATE (a19:Actor {name: 'Chris Pratt', age: 41, nationality: 'American'})
+CREATE (a20:Actor {name: 'Zoe Saldana', age: 42, nationality: 'American'})
+
+
+// Match movies with categories
+MATCH (m1:Movie {title: 'Inception'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m1)-[:BELONGS_TO]->(c1)
+
+MATCH (m2:Movie {title: 'The Revenant'}), (c2:Category {name: 'Drama'})
+CREATE (m2)-[:BELONGS_TO]->(c2)
+
+MATCH (m3:Movie {title: 'Interstellar'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m3)-[:BELONGS_TO]->(c1)
+
+MATCH (m4:Movie {title: 'Django Unchained'}), (c2:Category {name: 'Drama'})
+CREATE (m4)-[:BELONGS_TO]->(c2)
+
+MATCH (m5:Movie {title: 'The Dark Knight'}), (c2:Category {name: 'Drama'})
+CREATE (m5)-[:BELONGS_TO]->(c2)
+
+MATCH (m6:Movie {title: 'Fight Club'}), (c2:Category {name: 'Drama'})
+CREATE (m6)-[:BELONGS_TO]->(c2)
+
+MATCH (m7:Movie {title: 'Pulp Fiction'}), (c2:Category {name: 'Drama'})
+CREATE (m7)-[:BELONGS_TO]->(c2)
+
+MATCH (m8:Movie {title: 'The Matrix'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m8)-[:BELONGS_TO]->(c1)
+
+MATCH (m9:Movie {title: 'Forrest Gump'}), (c2:Category {name: 'Drama'})
+CREATE (m9)-[:BELONGS_TO]->(c2)
+
+MATCH (m10:Movie {title: 'The Shawshank Redemption'}), (c2:Category {name: 'Drama'})
+CREATE (m10)-[:BELONGS_TO]->(c2)
+
+MATCH (m11:Movie {title: 'The Godfather'}), (c2:Category {name: 'Drama'})
+CREATE (m11)-[:BELONGS_TO]->(c2)
+
+MATCH (m12:Movie {title: 'The Godfather Part II'}), (c2:Category {name: 'Drama'})
+CREATE (m12)-[:BELONGS_TO]->(c2)
+
+MATCH (m13:Movie {title: 'The Lord of the Rings: The Fellowship of the Ring'}), (c3:Category {name: 'Adventure'})
+CREATE (m13)-[:BELONGS_TO]->(c3)
+
+MATCH (m14:Movie {title: 'The Lord of the Rings: The Return of the King'}), (c3:Category {name: 'Adventure'})
+CREATE (m14)-[:BELONGS_TO]->(c3)
+
+MATCH (m15:Movie {title: 'The Lord of the Rings: The Two Towers'}), (c3:Category {name: 'Adventure'})
+CREATE (m15)-[:BELONGS_TO]->(c3)
+
+MATCH (m16:Movie {title: 'Star Wars: Episode IV - A New Hope'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m16)-[:BELONGS_TO]->(c1)
+
+MATCH (m17:Movie {title: 'Star Wars: Episode V - The Empire Strikes Back'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m17)-[:BELONGS_TO]->(c1)
+
+MATCH (m18:Movie {title: 'Star Wars: Episode VI - Return of the Jedi'}), (c1:Category {name: 'Science Fiction'})
+CREATE (m18)-[:BELONGS_TO]->(c1)
+
+MATCH (m19:Movie {title: 'Avengers: Endgame'}), (c3:Category {name: 'Adventure'})
+CREATE (m19)-[:BELONGS_TO]->(c3)
+
+MATCH (m20:Movie {title: 'Guardians of the Galaxy'}), (c3:Category {name: 'Adventure'})
+CREATE (m20)-[:BELONGS_TO]->(c3)
+
+
+
+
+// Match actors with movies
+MATCH (a1:Actor {name: 'Leonardo DiCaprio'}), (m1:Movie {title: 'Inception'})
+CREATE (a1)-[:ACTS_IN]->(m1)
+
+MATCH (a2:Actor {name: 'Joseph Gordon-Levitt'}), (m1:Movie {title: 'Inception'})
+CREATE (a2)-[:ACTS_IN]->(m1)
+
+MATCH (a1:Actor {name: 'Leonardo DiCaprio'}), (m2:Movie {title: 'The Revenant'})
+CREATE (a1)-[:ACTS_IN]->(m2)
+
+MATCH (a3:Actor {name: 'Tom Hardy'}), (m2:Movie {title: 'The Revenant'})
+CREATE (a3)-[:ACTS_IN]->(m2)
+
+MATCH (a4:Actor {name: 'Christian Bale'}), (m5:Movie {title: 'The Dark Knight'})
+CREATE (a4)-[:ACTS_IN]->(m5)
+
+MATCH (a5:Actor {name: 'Brad Pitt'}), (m6:Movie {title: 'Fight Club'})
+CREATE (a5)-[:ACTS_IN]->(m6)
+
+MATCH (a6:Actor {name: 'Samuel L. Jackson'}), (m7:Movie {title: 'Pulp Fiction'})
+CREATE (a6)-[:ACTS_IN]->(m7)
+
+MATCH (a7:Actor {name: 'Keanu Reeves'}), (m8:Movie {title: 'The Matrix'})
+CREATE (a7)-[:ACTS_IN]->(m8)
+
+MATCH (a8:Actor {name: 'Tom Hanks'}), (m9:Movie {title: 'Forrest Gump'})
+CREATE (a8)-[:ACTS_IN]->(m9)
+
+MATCH (a9:Actor {name: 'Morgan Freeman'}), (m10:Movie {title: 'The Shawshank Redemption'})
+CREATE (a9)-[:ACTS_IN]->(m10)
+
+MATCH (a10:Actor {name: 'Marlon Brando'}), (m11:Movie {title: 'The Godfather'})
+CREATE (a10)-[:ACTS_IN]->(m11)
+
+MATCH (a11:Actor {name: 'Al Pacino'}), (m12:Movie {title: 'The Godfather Part II'})
+CREATE (a11)-[:ACTS_IN]->(m12)
+
+MATCH (a12:Actor {name: 'Elijah Wood'}), (m13:Movie {title: 'The Lord of the Rings: The Fellowship of the Ring'})
+CREATE (a12)-[:ACTS_IN]->(m13)
+
+MATCH (a13:Actor {name: 'Ian McKellen'}), (m14:Movie {title: 'The Lord of the Rings: The Return of the King'})
+CREATE (a13)-[:ACTS_IN]->(m14)
+
+MATCH (a12:Actor {name: 'Elijah Wood'}), (m15:Movie {title: 'The Lord of the Rings: The Two Towers'})
+CREATE (a12)-[:ACTS_IN]->(m15)
+
+MATCH (a14:Actor {name: 'Mark Hamill'}), (m16:Movie {title: 'Star Wars: Episode IV - A New Hope'})
+CREATE (a14)-[:ACTS_IN]->(m16)
+
+MATCH (a15:Actor {name: 'Harrison Ford'}), (m17:Movie {title: 'Star Wars: Episode V - The Empire Strikes Back'})
+CREATE (a15)-[:ACTS_IN]->(m17)
+
+MATCH (a16:Actor {name: 'Carrie Fisher'}), (m18:Movie {title: 'Star Wars: Episode VI - Return of the Jedi'})
+CREATE (a16)-[:ACTS_IN]->(m18)
+
+MATCH (a17:Actor {name: 'Robert Downey Jr.'}), (m19:Movie {title: 'Avengers: Endgame'})
+CREATE (a17)-[:ACTS_IN]->(m19)
+
+MATCH (a18:Actor {name: 'Chris Evans'}), (m19:Movie {title: 'Avengers: Endgame'})
+CREATE (a18)-[:ACTS_IN]->(m19)
+
+MATCH (a19:Actor {name: 'Chris Pratt'}), (m20:Movie {title: 'Guardians of the Galaxy'})
+CREATE (a19)-[:ACTS_IN]->(m20)
+
+MATCH (a20:Actor {name: 'Zoe Saldana'}), (m20:Movie {title: 'Guardians of the Galaxy'})
+CREATE (a20)-[:ACTS_IN]->(m20)
+
+
+
+// Match movies with awards
+CREATE (aw1:Award {name: 'Oscar', year: 2010})
+CREATE (aw2:Award {name: 'Golden Globe', year: 2016})
+
+MATCH (m1:Movie {title: 'Inception'}), (aw1:Award {name: 'Oscar'})
+CREATE (m1)-[:WON]->(aw1)
+
+MATCH (m2:Movie {title: 'The Revenant'}), (aw2:Award {name: 'Golden Globe'})
+CREATE (m2)-[:WON]->(aw2)
+
+
+// Match actors with awards
+MATCH (a1:Actor {name: 'Leonardo DiCaprio'}), (aw2:Award {name: 'Golden Globe'})
+CREATE (a1)-[:HAS_WON]->(aw2)
