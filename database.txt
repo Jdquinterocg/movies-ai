@@ -3,6 +3,7 @@ CREATE (c1:Category {name: 'Science Fiction'})
 CREATE (c2:Category {name: 'Drama'})
 CREATE (c3:Category {name: 'Adventure'})
 CREATE (c4:Category {name: 'Comedy'})
+CREATE (c4:Category {name: 'Action'})
 
 Create movies
 CREATE (m1:Movie {title: 'Inception', description: 'A thief who steals corporate secrets...', rating: 8.8, age_restricted: false, awarded: true})
@@ -25,6 +26,10 @@ CREATE (m17:Movie {title: 'Star Wars: Episode V - The Empire Strikes Back', desc
 CREATE (m18:Movie {title: 'Star Wars: Episode VI - Return of the Jedi', description: 'After rescuing Han Solo...', rating: 8.3, age_restricted: false, awarded: true})
 CREATE (m19:Movie {title: 'Avengers: Endgame', description: 'After the devastating events of Avengers...', rating: 8.4, age_restricted: true, awarded: true})
 CREATE (m20:Movie {title: 'Guardians of the Galaxy', description: 'A group of intergalactic criminals...', rating: 8.0, age_restricted: false, awarded: true})
+CREATE (:Movie { title: 'Bad Boys', description: 'Two loose-cannon cops take on drug lords in Miami.', rating: 9.5, age_restricted: true, awarded: false})
+CREATE (:Movie { title: 'Bad Boys II', description: 'Two Miami narcotics detectives face dangerous drug lords.', rating: 9.6, age_restricted: true, awarded: false})
+CREATE (:Movie { title: 'Bad Boys for Life', description: 'Detectives face new threats as they team up once again.', rating: 9.7, age_restricted: true, awarded: false})
+
 
 Create actors
 CREATE (a1:Actor {name: 'Leonardo DiCaprio', age: 45, nationality: 'American'})
@@ -47,6 +52,8 @@ CREATE (a17:Actor {name: 'Robert Downey Jr.', age: 56, nationality: 'American'})
 CREATE (a18:Actor {name: 'Chris Evans', age: 39, nationality: 'American'})
 CREATE (a19:Actor {name: 'Chris Pratt', age: 41, nationality: 'American'})
 CREATE (a20:Actor {name: 'Zoe Saldana', age: 42, nationality: 'American'})
+CREATE (:Actor { name: 'Will Smith', age: 53, nationality: 'American'})
+CREATE (:Actor { name: 'martin Lawrence', age: 57, nationality: 'American'})
 
 
 // Match movies with categories
@@ -109,6 +116,16 @@ CREATE (m19)-[:BELONGS_TO]->(c3)
 
 MATCH (m20:Movie {title: 'Guardians of the Galaxy'}), (c3:Category {name: 'Adventure'})
 CREATE (m20)-[:BELONGS_TO]->(c3)
+
+MATCH (m:Movie {title: 'Bad Boys'})
+MATCH (c:Category {name: 'Action'})
+CREATE (m)-[:BELONGS_TO]->(c)
+MATCH (m:Movie {title: 'Bad Boys II'})
+MATCH (c:Category {name: 'Action'})
+CREATE (m)-[:BELONGS_TO]->(c)
+MATCH (m:Movie {title: 'Bad Boys for Life'})
+MATCH (c:Category {name: 'Action'})
+CREATE (m)-[:BELONGS_TO]->(c)
 
 
 
@@ -180,6 +197,25 @@ CREATE (a19)-[:ACTS_IN]->(m20)
 MATCH (a20:Actor {name: 'Zoe Saldana'}), (m20:Movie {title: 'Guardians of the Galaxy'})
 CREATE (a20)-[:ACTS_IN]->(m20)
 
+MATCH (m:Movie {title: 'Bad Boys'})
+MATCH (a:Actor {name: 'Will Smith'})
+CREATE (a)-[:ACTS_IN]->(m)
+MATCH (m:Movie {title: 'Bad Boys II'})
+MATCH (a:Actor {name: 'Will Smith'})
+CREATE (a)-[:ACTS_IN]->(m)
+MATCH (m:Movie {title: 'Bad Boys for Life'})
+MATCH (a:Actor {name: 'Will Smith'})
+CREATE (a)-[:ACTS_IN]->(m)
+
+MATCH (m:Movie {title: 'Bad Boys'})
+MATCH (a:Actor {name: 'Martin Lawrence'})
+CREATE (a)-[:ACTS_IN]->(m)
+MATCH (m:Movie {title: 'Bad Boys II'})
+MATCH (a:Actor {name: 'Martin Lawrence'})
+CREATE (a)-[:ACTS_IN]->(m)
+MATCH (m:Movie {title: 'Bad Boys for Life'})
+MATCH (a:Actor {name: 'Martin Lawrence'})
+CREATE (a)-[:ACTS_IN]->(m)
 
 
 // Match movies with awards
