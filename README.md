@@ -7,7 +7,7 @@ This project focuses on creating a web application for movie search and querying
 - Integration with Neo4j: Utilizes a graph database (Neo4j) to store and query relationships between movies, actors, categories, and awards.
 - Artificial Intelligence: Implements OpenAI to generate Cypher queries based on user descriptions and questions.
 
-```
+
 ## Technologies Used
 Openai, nextjs and neo4j
 
