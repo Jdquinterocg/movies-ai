@@ -13,7 +13,6 @@ export default function Home() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    console.log("It's first entry")
     // Fetch movies data from API
     const fetchMovies = async () => {
 
@@ -24,7 +23,7 @@ export default function Home() {
           body: JSON.stringify({ request }),
         });
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setMovies(data);
       } catch (error) {
         console.error('Error fetching movies:', error);
