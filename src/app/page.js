@@ -11,6 +11,7 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [request, setRequest] = useState('');
   const [query, setQuery] = useState('');
+  const [cypher, setCypher] = useState('');
 
   useEffect(() => {
     // Fetch movies data from API
@@ -24,7 +25,8 @@ export default function Home() {
         });
         const data = await response.json();
         // console.log(data);
-        setMovies(data);
+        setMovies(data.records);
+        setCypher(data.cypherQuery);
       } catch (error) {
         console.error('Error fetching movies:', error);
         setMovies([])
@@ -71,8 +73,8 @@ export default function Home() {
         <Button className="ml-4" onClick={handleSearch}>Search</Button>
       </div>
       <div className="mb-8">
-        <p><strong>Nota:</strong> Para mí, Bad Boys son las mejores películas de todas Solo se pueden hacer búsquedas dentro de las siguientes categorías: aventura, ciencia ficción, drama, acción y comedia. Si la categoría solicitada no está disponible, se mostrarán películas de una categoría similar. Los actores disponibles incluyen: Leonardo DiCaprio, Joseph Gordon-Levitt, Tom Hardy, Christian Bale, Brad Pitt, Samuel L. Jackson, Keanu Reeves, Tom Hanks, Morgan Freeman, Marlon Brando, Al Pacino, Elijah Wood, Ian McKellen, Mark Hamill, Harrison Ford, Carrie Fisher, Robert Downey Jr., Chris Evans, Chris Pratt, Will Smith, Martin Lawrence y Zoe Saldana.</p>
-      </div>
+        <p><strong>Cypher: </strong> {cypher}</p>
+        </div>
       <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {

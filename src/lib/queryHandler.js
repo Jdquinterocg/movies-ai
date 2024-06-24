@@ -52,7 +52,7 @@ export async function handleQuery(query) {
     const result = await session.run(cypherQuery);
     const records = result.records.map(record => record.toObject());
 
-    return { cypherQuery, records };
+    return { cypherQuery, records, cypherQuery };
 
   } catch (error) {
     console.error('Error running query:', error);

@@ -8,7 +8,7 @@ export async function POST(req, res) {
         const { request } = body;
 
         const result = await handleQuery(request == undefined ? null : request);
-        return Response.json(result.records)
+        return Response.json({records: result.records, cypherQuery: result.cypherQuery})
     } catch (error) {
         console.error(error);
         return Response.json({ error: 'Internal Server Error' })
