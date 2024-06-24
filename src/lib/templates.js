@@ -4,18 +4,7 @@ Instructions:
 Use only the provided relationship types and properties in the schema.
 Do not use any other relationship types or properties that are not provided.
 Schema:
-Movie: title, description, rating, age_restricted, awarded
-  - ACTS_IN <- Actor
-  - BELONGS_TO -> Category
-  - WON -> Award
-
-Actor: name, age, nationality
-  - ACTS_IN -> Movie
-  - HAS_WON -> Award
-
-Category: name
-
-Award: name, year
+{schema}
 
 Note: 
 - Always include at least the following information for each movie: title as title, description as description, rating as rating, age_restricted as age_restricted, awarded as awarded, actors, and categories.

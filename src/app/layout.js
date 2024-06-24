@@ -4,7 +4,6 @@
 import { Libre_Franklin } from 'next/font/google'
 import { Taviraj } from 'next/font/google'
 import './styles.css'
-import { Component } from '@/components/component/component'
 
 const libre_franklin = Libre_Franklin({
   subsets: ['latin'],
@@ -22,7 +21,6 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body className={libre_franklin.variable + ' ' + taviraj.variable}>
-        {/* <Component /> */}
         {children}
       </body>
     </html>
